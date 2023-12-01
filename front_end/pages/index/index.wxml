@@ -1,0 +1,32 @@
+<!--index.wxml-->
+
+<view class="containerBox">
+  <view class="leftBtn" bindtap="loadImage">上传图片</view>
+  <view class="rightBtn" bindtap="identify">图像识别</view>
+</view>
+<image src="{{imgSrc}}" class="showImg"></image>
+<view class="result" wx:if="{{isShowDetail}}">
+  <view class="resultTitle">识别结果:</view>
+  <view class="productDetailTable">
+    <view class="productTableTr">
+      <view class="leftTr">
+        <view class="little leftTrText">文字行数：</view>
+      </view>
+      <view class="rightTr little">{{wordLine}}</view>
+    </view>
+
+    <view class="productTableTr" wx:for="{{resultList}}">
+      <view class="leftTr">
+        <view class="little leftTrText">{{item.words}}</view>
+      </view>
+      <view class="rightTr little">
+        <view class="displayBox copyBtn" bindtap="shangchuan" data-id='{{item.words}}'>上传</view>
+      </view>
+    </view>
+  </view>
+  <!-- 在你的小程序页面的wxml文件中 -->
+  <view class="analysisresult">分析结果:</view>
+  <view>
+    <textarea value="{{resultText}}" disabled></textarea>
+  </view>
+</view>
